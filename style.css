@@ -236,6 +236,7 @@ section {
     height: 100%;
     object-fit: cover;
     display: block; /* Remove extra space below image */
+    object-position: center 10%; /* Moves image down within the circle */
 }
 
 .attorney-info {
