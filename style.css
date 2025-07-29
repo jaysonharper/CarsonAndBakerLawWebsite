@@ -1,0 +1,541 @@
+/* --- Base Styles --- */
+:root {
+    --color-dark-bg: #1a1a1a;
+    --color-green-accent: #004e30;
+    --color-gold-accent: #ffd300;
+    --color-light-text: #ffffff;
+    --color-medium-text: #cccccc;
+    --color-card-bg: #282828; /* Slightly lighter dark for cards */
+}
+
+html {
+    scroll-behavior: smooth; /* For JavaScript smooth scroll fallback */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Example body font */
+    color: var(--color-light-text);
+    background-color: var(--color-dark-bg);
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+h1, h2, h3 {
+    font-family: 'Times New Roman', Times, serif; /* Example heading font */
+    color: var(--color-gold-accent); /* Headings in gold */
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-green-accent); /* Section titles in green */
+}
+
+a {
+    color: var(--color-light-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* --- Navigation Bar --- */
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; /* Ensures nav stretches to right edge */
+    width: 100%;
+    box-sizing: border-box; /* Prevents scroll bar overlap */
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent dark background */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensures it stays on top */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#main-nav .logo {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-light-text);
+    flex-shrink: 0; /* Prevent logo from shrinking */
+    padding-right: 20px; /* Space between logo and menu */
+}
+
+#main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-grow: 1; /* Allow ul to take available space */
+    justify-content: center; /* Center navigation links */
+}
+
+#main-nav ul li a {
+    color: var(--color-light-text);
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    position: relative; /* For underline effect */
+}
+
+#main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-gold-accent);
+    transition: width 0.3s ease;
+}
+
+#main-nav ul li a:hover::after,
+#main-nav ul li a.active::after { /* You'll add 'active' class with JS */
+    width: 100%;
+}
+
+.call-button {
+    background-color: var(--color-green-accent);
+    color: var(--color-light-text);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    transition: background-color 0.3s ease;
+}
+
+.call-button:hover {
+    background-color: #006b40; /* Darker green on hover */
+}
+
+.call-button .phone-icon {
+    /* Replace with actual icon font/SVG or image later */
+    /* display: inline-block; */
+    /* width: 16px; */
+    /* height: 16px; */
+    /* background-color: var(--color-light-text); */
+    /* -webkit-mask: url('path/to/phone-icon.svg') no-repeat center / contain; */
+    /* mask: url('path/to/phone-icon.svg') no-repeat center / contain; */
+    margin-right: 8px;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Takes full viewport height */
+    background: url('path/to/portland-courthouse.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-light-text);
+    padding-top: 80px; /* Offset for fixed nav bar */
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for readability */
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.hero-section h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem); /* Very large, responsive headline */
+    color: var(--color-gold-accent);
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Subtle text shadow for contrast */
+}
+
+.hero-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+/* --- General Section Styling --- */
+section {
+    padding: 80px 20px; /* Top/bottom padding for all sections */
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center content */
+    min-height: 80vh; /* Ensure sections have decent height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Vertically center content if short */
+}
+
+/* --- Card Elements (Services & Attorney Profiles) --- */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.card {
+    background-color: var(--color-card-bg); /* Slightly lighter dark */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to top/bottom */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Raise effect on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Service Cards */
+.service-card h3 {
+    color: var(--color-light-text);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.service-card p {
+    color: var(--color-medium-text);
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Attorney Profile Cards */
+.attorney-card {
+    flex-direction: row; /* Horizontal layout for image and text */
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.attorney-image-wrapper {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    margin-right: 20px;
+    border-radius: 50%; /* Circular image */
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    border: 3px solid var(--color-gold-accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attorney-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Remove extra space below image */
+}
+
+.attorney-info {
+    flex-grow: 1;
+    color: var(--color-medium-text);
+}
+
+.attorney-info h3 {
+    text-align: left;
+    color: var(--color-light-text);
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.attorney-info p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.attorney-info ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.attorney-info ul li {
+    background-color: rgba(255, 211, 0, 0.1); /* Light gold background for expertise */
+    color: var(--color-gold-accent);
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    display: inline-block; /* Allows them to sit next to each other */
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* --- Testimonials Section --- */
+.testimonial-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.testimonial-card {
+    background-color: var(--color-card-bg);
+    border-left: 5px solid var(--color-green-accent); /* Green accent line */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: var(--color-light-text);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.testimonial-card footer {
+    text-align: right;
+    font-weight: bold;
+    color: var(--color-gold-accent);
+}
+
+/* --- Find Us Section (Google Map) --- */
+.map-container {
+    width: 100%;
+    max-width: 800px; /* Limit map width */
+    height: 400px; /* Fixed height for the map iframe */
+    background-color: var(--color-card-bg); /* Placeholder background */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures map corners are rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.map-container p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: var(--color-light-text);
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: rgba(0, 0, 0, 0.95); /* Even darker footer */
+    color: var(--color-medium-text);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.site-footer .sitemap {
+    margin-bottom: 20px;
+}
+
+.site-footer .sitemap h4 {
+    color: var(--color-light-text);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.site-footer .sitemap ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.site-footer .sitemap ul li a {
+    color: var(--color-medium-text);
+    font-size: 0.95rem;
+}
+
+.site-footer .sitemap ul li a:hover {
+    color: var(--color-gold-accent);
+}
+
+.site-footer .copyright {
+    font-size: 0.85rem;
+    margin-top: 20px;
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+@media (min-width: 768px) {
+    /* Adjust navigation for tablets/desktops if needed */
+    .testimonial-container {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Side-by-side testimonials */
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Adjust for larger desktops */
+    .card-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for services/attorneys */
+    }
+
+    .attorney-card {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Mobile specific adjustments */
+    #main-nav {
+        flex-wrap: wrap; /* Allow navigation items to wrap */
+        justify-content: center;
+        text-align: center;
+    }
+
+    #main-nav .logo,
+    #main-nav .call-button {
+        margin-bottom: 10px;
+    }
+
+    #main-nav ul {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .attorney-card {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        align-items: center;
+        text-align: center;
+    }
+
+    .attorney-image-wrapper {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .attorney-info h3 {
+        text-align: center;
+    }
+}
+
+/* --- Navigation Toggle Button --- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 10px;
+  z-index: 1100;
+}
+
+.nav-toggle-bar {
+  width: 28px;
+  height: 3px;
+  background: var(--color-light-text);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* --- Responsive Navigation --- */
+@media (max-width: 900px) {
+  #main-nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+    padding: 15px 10px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.97);
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 1001;
+  }
+
+  .nav-links.open {
+    max-height: 400px; /* Enough for all links */
+    opacity: 1;
+    animation: navExpandDown 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  @keyframes navExpandDown {
+    0% { max-height: 0; opacity: 0; }
+    80% { max-height: 400px; opacity: 1; }
+    100% { max-height: 400px; opacity: 1; }
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #main-nav .logo {
+    padding-right: 0;
+    font-size: 1.3rem;
+  }
+
+  .call-button {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* --- Hide nav links on mobile/tablet by default --- */
+@media (max-width: 900px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(-2px); }
+  30% { transform: translateX(2px); }
+  45% { transform: translateX(-2px); }
+  60% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+.call-button:hover .phone-icon {
+  animation: vibrate 0.4s linear;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
