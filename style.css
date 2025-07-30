@@ -60,7 +60,7 @@ a {
 
 #main-nav .logo {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: var(--color-light-text);
     flex-shrink: 0; /* Prevent logo from shrinking */
@@ -78,7 +78,7 @@ a {
 
 #main-nav ul li a {
     color: var(--color-light-text);
-    font-size: 1.1rem;
+    font-size: 2rem;
     padding: 10px 15px;
     position: relative; /* For underline effect */
 }
@@ -103,8 +103,9 @@ a {
 .call-button {
     background-color: var(--color-green-accent);
     color: var(--color-light-text);
-    padding: 10px 20px;
+    padding: 20px;
     border-radius: 5px;
+    font-size: 1.5rem;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -117,46 +118,70 @@ a {
 }
 
 .call-button .phone-icon {
-    /* Replace with actual icon font/SVG or image later */
-    /* display: inline-block; */
-    /* width: 16px; */
-    /* height: 16px; */
-    /* background-color: var(--color-light-text); */
-    /* -webkit-mask: url('path/to/phone-icon.svg') no-repeat center / contain; */
-    /* mask: url('path/to/phone-icon.svg') no-repeat center / contain; */
     margin-right: 8px;
 }
 
 /* --- Hero Section --- */
 .hero-section {
     position: relative;
-    width: 100%;
-    height: 100vh; /* Takes full viewport height */
-    background: url('path/to/portland-courthouse.jpg') no-repeat center center/cover;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: calc(100vh - 70px); /* Fill viewport minus nav height */
+    height: calc(100vh - 70px);
+    background: url('./img/hero_background.jpg') no-repeat center center / cover;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: left;
     color: var(--color-light-text);
-    padding-top: 80px; /* Offset for fixed nav bar */
+    margin-top: 108px; /* Height of #main-nav */
+    padding-top: 0;
+    max-width: none;
+    min-width: 100vw;
+    box-sizing: border-box;
 }
 
 .hero-overlay {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for readability */
-    padding: 40px;
+    height: 100%;
+    min-width: 260px;
+    max-width: 600px;
+    padding: 40px 30px;
+    margin-top: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
 }
 
 .hero-section h1 {
-    font-size: clamp(3rem, 7vw, 5.5rem); /* Very large, responsive headline */
+    font-size: clamp(2rem, 4vw, 3rem); /* Smaller, responsive headline */
     color: var(--color-gold-accent);
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Subtle text shadow for contrast */
+    margin-bottom: 30px;
+    margin-top: 0px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    width: 100%;
+    align-self: center;
+    justify-self: center;
 }
 
 .hero-button {
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.hero-section p {
+    font-size: 2rem;
+    color: var(--color-light-text);
+    margin-top: 20px;
+    text-align: center; /* Center text in hero section */
 }
 
 /* --- General Section Styling --- */
