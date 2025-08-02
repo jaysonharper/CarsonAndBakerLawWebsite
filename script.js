@@ -1,3 +1,35 @@
+// Dynamically set --nav-height on body to match #main-nav height
+function setNavHeightVar() {
+  var nav = document.getElementById('main-nav');
+  if (nav) {
+    document.body.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+  }
+}
+
+window.addEventListener('DOMContentLoaded', setNavHeightVar);
+window.addEventListener('resize', setNavHeightVar);
+
+// Dynamically offset the services-section based on the greater of hero-section or hero-overlay height
+function setServicesSectionOffset() {
+  var heroSection = document.querySelector('.hero-section');
+  var heroOverlay = document.querySelector('.hero-overlay');
+  var servicesSection = document.querySelector('.dynamic-offset-section');
+  if (heroSection && heroOverlay && servicesSection) {
+    // Get the greater of the two heights
+    var heroSectionHeight = heroSection.offsetHeight;
+    var heroOverlayHeight = heroOverlay.offsetHeight;
+    var offset = 40;
+    if (heroSectionHeight < heroOverlayHeight) {
+        offset = heroOverlayHeight - heroSectionHeight + 40; // 40px for additional spacing
+    }
+    servicesSection.style.marginTop = offset + 'px';
+  } else {
+    console.log('One or more elements not found:', { heroSection, heroOverlay, servicesSection });
+  }
+}
+
+window.addEventListener('DOMContentLoaded', setServicesSectionOffset);
+window.addEventListener('resize', setServicesSectionOffset);
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
