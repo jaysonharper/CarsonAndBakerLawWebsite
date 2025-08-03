@@ -1,3 +1,19 @@
+// --- Vibrate phone icon every 10 seconds ---
+document.addEventListener("DOMContentLoaded", function () {
+  const phoneIcons = document.querySelectorAll(".call-button .phone-icon");
+  if (phoneIcons.length > 0) {
+    setInterval(() => {
+      phoneIcons.forEach((icon) => {
+        icon.classList.remove("vibrate-temp"); // Remove if present
+        // Force reflow to restart animation
+        void icon.offsetWidth;
+        icon.classList.add("vibrate-temp");
+        setTimeout(() => icon.classList.remove("vibrate-temp"), 400); // Match vibrate animation duration
+      });
+    }, 5000);
+  }
+});
+
 // Dynamically set --nav-height on body to match #main-nav height
 function setNavHeightVar() {
   var nav = document.getElementById("main-nav");

@@ -1,11 +1,13 @@
 /* --- Base Styles --- */
 :root {
   --color-dark-bg: #1a1a1a;
+  --color-light-bg: #f0f0f0;
   --color-green-accent: #004e30;
+  --color-blue-accent: #7a8899;
   --color-gold-accent: #ffd300;
   --color-light-text: #ffffff;
   --color-medium-text: #cccccc;
-  --color-card-bg: #282828; /* Slightly lighter dark for cards */
+  --color-card-bg: rgba(53, 64, 75, 0.9);
 }
 
 html {
@@ -15,7 +17,10 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif; /* Example body font */
   color: var(--color-light-text);
-  background-color: var(--color-dark-bg);
+  background-color: var(--color-blue-accent);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100" height="100" fill="white" filter="url(%23noiseFilter)" opacity="0.08"/></svg>');
+  background-repeat: repeat;
+  background-size: 300px 300px;
   margin: 0;
   line-height: 1.6;
   overflow-x: hidden; /* Prevent horizontal scroll */
@@ -35,7 +40,7 @@ h3 {
 
 h2 {
   font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--color-green-accent); /* Section titles in green */
+  color: var(--color-light-text); /* Section titles in green */
 }
 
 a {
@@ -54,9 +59,9 @@ a {
   width: 100%;
   box-sizing: border-box; /* Prevents scroll bar overlap */
   background-color: rgba(
-    0,
-    0,
-    0,
+    53,
+    64,
+    75,
     0.9
   ); /* Slightly transparent dark background */
   padding: 15px 20px;
@@ -111,7 +116,7 @@ a {
 }
 
 .call-button {
-  background-color: var(--color-green-accent);
+  background-color: var(--color-blue-accent);
   color: var(--color-light-text);
   padding: 20px;
   border-radius: 5px;
@@ -124,7 +129,7 @@ a {
 }
 
 .call-button:hover {
-  background-color: #006b40; /* Darker green on hover */
+  background-color: #297ad0; /* Lighter blue on hover */
 }
 
 .call-button .phone-icon {
@@ -165,16 +170,16 @@ a {
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(26, 26, 26, 0.95) 70%,
-    rgba(26, 26, 26, 0) 100%
+    rgba(53, 64, 75, 0.9) 70%,
+    rgba(53, 64, 75, 0) 100%
   );
 }
 
 .hero-overlay {
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.7) 70%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(53, 64, 75, 0.9) 70%,
+    rgba(53, 64, 75, 0) 100%
   );
   min-width: 550px;
   max-width: 50vw;
@@ -192,7 +197,7 @@ a {
 
 .hero-section h1 {
   font-size: clamp(2rem, 4vw, 3rem); /* Smaller, responsive headline */
-  color: var(--color-gold-accent);
+  color: var(--color-light-text);
   margin-bottom: 30px;
   margin-top: 0px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -209,7 +214,7 @@ a {
 }
 
 .hero-section p {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2.7rem);
   color: var(--color-light-text);
   margin-top: 20px;
 }
@@ -239,7 +244,7 @@ section {
 }
 
 .card {
-  background-color: var(--color-card-bg); /* Slightly lighter dark */
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   padding: 30px;
@@ -265,7 +270,7 @@ section {
 
 .attorney-card {
   background-color: var(--color-card-bg);
-  border-left: 5px solid var(--color-green-accent); /* Green accent line */
+  border-left: 5px solid var(--color-light-text);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   padding: 30px;
@@ -278,6 +283,10 @@ section {
 .attorney-card:hover {
   transform: translateY(-8px); /* Raise effect on hover */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.service-card {
+  border-left: 5px solid var(--color-light-text);
 }
 
 /* Service Cards */
@@ -302,7 +311,7 @@ section {
   overflow: hidden;
   width: 150px;
   height: 150px;
-  border: 3px solid var(--color-gold-accent);
+  border: 3px solid var(--color-light-text);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -341,13 +350,8 @@ section {
 }
 
 .attorney-info ul li {
-  background-color: rgba(
-    255,
-    211,
-    0,
-    0.1
-  ); /* Light gold background for expertise */
-  color: var(--color-gold-accent);
+  background-color: var(--color-blue-accent);
+  color: var(--color-light-text);
   padding: 5px 10px;
   border-radius: 3px;
   margin-bottom: 5px;
@@ -367,7 +371,7 @@ section {
 
 .testimonial-card {
   background-color: var(--color-card-bg);
-  border-left: 5px solid var(--color-green-accent); /* Green accent line */
+  border-left: 5px solid var(--color-light-text);
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -422,7 +426,7 @@ section {
 
 /* --- Footer --- */
 .site-footer {
-  background-color: rgba(0, 0, 0, 0.95); /* Even darker footer */
+  background-color: rgba(53, 64, 75, 0.9); /* Match nav bar color */
   color: var(--color-medium-text);
   padding: 40px 20px;
   text-align: center;
@@ -642,6 +646,10 @@ section {
 }
 
 .call-button:hover .phone-icon {
+  animation: vibrate 0.4s linear;
+}
+
+.call-button .phone-icon.vibrate-temp {
   animation: vibrate 0.4s linear;
 }
 
