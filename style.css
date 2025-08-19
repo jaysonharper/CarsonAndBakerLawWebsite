@@ -149,7 +149,7 @@ a {
   background: url("./img/hero_background.jpg") no-repeat center center / cover;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-start; 
   align-items: stretch;
   text-align: left;
   color: var(--color-light-text);
@@ -214,7 +214,7 @@ a {
 }
 
 .hero-section p {
-  font-size: clamp(1.5rem, 4vw, 2.7rem);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
   color: var(--color-light-text);
   margin-top: 20px;
 }
@@ -301,7 +301,41 @@ section {
 .service-card p {
   color: var(--color-medium-text);
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
+}
+
+/* Clickable affordance for service cards */
+.service-card {
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.service-card:focus {
+  outline: 3px solid rgba(255, 211, 0, 0.18);
+  outline-offset: 4px;
+}
+
+.service-card:hover,
+.service-card:focus {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.card-cta {
+  display: block;
+  margin-top: 12px;
+  font-weight: 700;
+  color: var(--color-gold-accent);
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  transform: translateY(4px);
+  text-align: right;
+}
+
+.service-card:hover .card-cta,
+.service-card:focus .card-cta {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .attorney-image-wrapper {
@@ -356,7 +390,7 @@ section {
   border-radius: 3px;
   margin-bottom: 5px;
   display: inline-block; /* Allows them to sit next to each other */
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
   font-weight: bold;
 }
 
@@ -528,6 +562,28 @@ section {
   .attorney-card {
     flex-direction: row;
   }
+
+  /* Larger typography for service cards on desktop */
+  .attorney-card h3 {
+    /* slightly larger and more prominent title on wide screens */
+    font-size: 2.2rem;
+  }
+
+  .attorney-card p {
+    /* increase body text for readability on larger displays */
+    font-size: 1.2rem;
+  }
+
+  /* Larger typography for service cards on desktop */
+  .service-card h3 {
+    /* slightly larger and more prominent title on wide screens */
+    font-size: 2.2rem;
+  }
+
+  .service-card p {
+    /* increase body text for readability on larger displays */
+    font-size: 1.2rem;
+  }
 }
 
 /* --- Navigation Toggle Button --- */
@@ -657,4 +713,65 @@ section {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* --- Modal Styles for Service Details --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none; /* Hidden by default; toggled with JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* Above nav */
+  padding: 20px;
+}
+
+.modal-overlay[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal {
+  background: var(--color-card-bg);
+  color: var(--color-light-text);
+  width: 100%;
+  max-width: 720px;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.modal h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--color-gold-accent);
+  text-align: left;
+}
+
+.modal p {
+  color: var(--color-medium-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--color-light-text);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Make modal full-width on small screens */
+@media (max-width: 600px) {
+  .modal {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+  }
 }
