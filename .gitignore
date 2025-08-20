@@ -34,3 +34,4 @@ out/
 *.swp
 *.bak
 *.tmp
+output.txt

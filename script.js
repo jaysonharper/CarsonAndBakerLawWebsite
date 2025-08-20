@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const rawTitle = h3 ? h3.textContent.trim() : "Service";
 
       // Special override for Estate Planning
-      if (rawTitle.toLowerCase() === "estate planning") {
+      if (rawTitle.toLowerCase() === "estate & tax planning") {
         const title = "Estate and Tax Planning";
         const descHTML = `
           <p>Our goal at Carson & Baker in estate planning is to listen to you and help you to carry out your wishes, and to help to maximize the money/assets your beneficiaries receive after you are gone, without paying unnecessary taxes, costs, and fees. You can start estate planning at any age, but your (or your heirs’) maximum flexibility will occur the sooner you consult us. There are various methods at our disposal to ensure your assets are effectively allocated, yet accessible by your beneficiaries upon your death. We specialize in estate planning services as detailed below.</p>
